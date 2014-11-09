@@ -1,0 +1,13 @@
+{
+  "name": "atom-scroller",
+  "main": "./lib/atom-scroller.js",
+  "version": "0.0.0",
+  "description": "A touch scroll enabler for GitHub Atom",
+  "repository": "https://github.com/SaschaNaz/AtomScroller",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+  }
+}
