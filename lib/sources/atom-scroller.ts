@@ -24,7 +24,7 @@ module AtomScroller {
   }
 
   export function patchEditor(editorView: any) {// EditorView
-    Array.prototype.forEach.call(editorView.querySelectorAll(".horizontal-scrollbar, .vertical-scrollbar"),
+    Array.prototype.forEach.call(editorView.element.querySelectorAll(".horizontal-scrollbar, .vertical-scrollbar"),
       (bar: HTMLElement) => bar.style.display = "none");
 
     var view = editorView.gutter.find(".scroll-view");
