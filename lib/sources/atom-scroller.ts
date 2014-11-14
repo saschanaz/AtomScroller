@@ -40,7 +40,6 @@ module AtomScroller {
     view.scrollLeft = editorView.editor.getScrollLeft();
     subscriptions.push(editorView.editor.onDidChangeScrollTop((top: number) => view.scrollTop = top));
     subscriptions.push(editorView.editor.onDidChangeScrollLeft((left: number) => view.scrollLeft = left));
-    console.log(subscriptions);
   }
 
   export function depatchEditor(editorView: any) {
