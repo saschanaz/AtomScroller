@@ -33,6 +33,7 @@ module AtomScroller {
       // Match scroll position when touch-scrolled
       linenumbers.style.webkitTransform = "translate3d(0px, -" + view.scrollTop + "px, 0px)";
       editorView.editor.setScrollTop(view.scrollTop);
+      editorView.editor.setScrollLeft(view.scrollLeft);
     };
     view.addEventListener("scroll", view._atomscroller_onscroll);
 
