@@ -38,14 +38,8 @@ module AtomScroller {
 
     view.scrollTop = editorView.editor.getScrollTop();
     view.scrollLeft = editorView.editor.getScrollLeft();
-    subscriptions.push(editorView.editor.onDidChangeScrollTop((top: number) => {
-      if (view.scrollTop !== top)
-        view.scrollTop = top;
-    }));
-    subscriptions.push(editorView.editor.onDidChangeScrollLeft((left: number) =>  {
-      if (view.scrollLeft !== left)
-        view.scrollLeft = left;
-    }));
+    subscriptions.push(editorView.editor.onDidChangeScrollTop((top: number) => view.scrollTop = top));
+    subscriptions.push(editorView.editor.onDidChangeScrollLeft((left: number) => view.scrollLeft = left));
     console.log(subscriptions);
   }
 
@@ -74,7 +68,6 @@ export var activate = (state: AtomCore.IAtomState) => {
 
 export var deactivate = () => {
   atom.workspaceView.getEditorViews().forEach((editorView) => AtomScroller.depatchEditor(editorView));
-  console.log(AtomScroller.subscriptions)
   AtomScroller.subscriptions.forEach((subscription) =>  {
     if (subscription.dispose)
       subscription.dispose();
