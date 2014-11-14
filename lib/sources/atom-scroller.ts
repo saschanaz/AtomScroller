@@ -6,7 +6,7 @@ module AtomScroller {
 
   function getElements(editorView: any) {
     return {
-      view: <IScrollView>editorView.element.querySelector(".scroll-view"),
+      view: <IScrollView>editorView.scrollView[0],
       linenumbers: editorView.gutter.find(".line-numbers")[0],
       content: editorView.element.querySelector(".lines.overlayer"),
       scrollbars: editorView.element.querySelectorAll(".horizontal-scrollbar, .vertical-scrollbar")
@@ -38,8 +38,14 @@ module AtomScroller {
 
     view.scrollTop = editorView.editor.getScrollTop();
     view.scrollLeft = editorView.editor.getScrollLeft();
-    subscriptions.push(editorView.editor.onDidChangeScrollTop((top: number) => view.scrollTop = top));
-    subscriptions.push(editorView.editor.onDidChangeScrollLeft((left: number) => view.scrollLeft = left));
+    subscriptions.push(editorView.editor.onDidChangeScrollTop((top: number) => {
+      if (view.scrollTop !== top)
+        view.scrollTop = top;
+    }));
+    subscriptions.push(editorView.editor.onDidChangeScrollLeft((left: number) =>  {
+      if (view.scrollLeft !== left)
+        view.scrollLeft = left;
+    }));
     console.log(subscriptions);
   }
 
